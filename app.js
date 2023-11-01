@@ -8,7 +8,7 @@ const path = require('path');
 var cors = require('cors');
 
 var app = express();
-var port = process.env.PORT || 7000;
+var port = process.env.PORT || 80;
 var baseDir ='http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl';
 
 // cors config
@@ -21,7 +21,7 @@ var whitelist = [
 
 var corsOptions = {
 	origin: function(origin, callback){
-		var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+		var originIsWhitelisted = true;// whitelist.indexOf(origin) !== -1;
 		callback(null, originIsWhitelisted);
 	}
 };
