@@ -8,7 +8,7 @@ const path = require('path');
 var cors = require('cors');
 
 var app = express();
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 800;
 var baseDir ='http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl';
 
 // cors config
@@ -31,11 +31,11 @@ app.listen(port, function(err){
 });
 
 //app.use(express.static('web'))
-app.use(express.static(path.join(__dirname, '..', 'web')));
+app.use('/static', express.static(path.join(__dirname, 'js')))
 
 app.get('/', cors(corsOptions), function(req, res){
 
-	res.sendFile(__dirname +'/web/index.html', function(err) {
+	res.sendFile(__dirname +'/js/index.html', function(err) {
       if (err) {
         res.status(500).send(err)
       }
